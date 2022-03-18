@@ -78,9 +78,17 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary btn-block w-100">
                                     {{ __('Register') }}
                                 </button>
+                            </div>
+                        </div>
+
+                        <p style="text-align: center" class="display-4 mb-2">Or</p>
+                        
+                        <div class="row  form-group">
+                            <div class="col-md-6 offset-md-3 ">
+                                <a href="{{route('login.google')}}" class="btn btn-danger btn-block w-100">Sign up with google</a><br>
                             </div>
                         </div>
                     </form>
