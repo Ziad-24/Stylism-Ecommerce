@@ -11,8 +11,6 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                         
-
                         <div class="row mb-3">
                             <label for="identify" class="col-md-4 col-form-label text-md-end">{{ __('Phone or Email Address') }}</label>
 
@@ -75,7 +73,6 @@
                             </div>
                         </div>
                         
-
                     </form>
                 </div>
             </div>

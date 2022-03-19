@@ -9,8 +9,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
-
-
 class LoginController extends Controller
 {
     /*
@@ -43,7 +41,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-
     public function username()
     {
         $value = request()->input('identify');
@@ -61,8 +58,6 @@ class LoginController extends Controller
     }
 
 
-
-    
     public function googleRedirect()
     {
         return Socialite::driver('google')->redirect();
@@ -87,6 +82,4 @@ class LoginController extends Controller
     
         return redirect()->route('home');
     }
-
-
 }

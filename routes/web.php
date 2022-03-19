@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,16 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify'=>true]);
+Route::group(['prefix'=>'login/google'] , function(){
+    //  google redirect
+    Route::get('/redirect', [LoginController::class , 'googleRedirect']) -> name('login.google');
+    Route::get('/callback', [LoginController::class , 'googleCallback']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 
-
-//  google redirect
-Route::get('login/google/redirect', [LoginController::class , 'googleRedirect']) -> name('login.google');
-
-
-Route::get('login/google/callback', [LoginController::class , 'googleCallback']);
-
-
-
+Route::group(['middleware'=>'auth'] , function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+});
