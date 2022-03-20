@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\HandleUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Models\Category;
@@ -37,10 +38,18 @@ Route::group(['middleware' => 'admin' , 'prefix'=>'admin'],function(){
         Route::post('update' , [CategoryController::class , 'updateCategory']) -> name('admin.category.update');
         
         Route::post('delete' , [CategoryController::class , 'deleteCategory']) -> name('admin.category.delete');
-
+        
     });
+    
+    Route::group(['prefix' => 'users'] , function(){
+        Route::get('/all' , [HandleUserController::class , 'getAllUsers']) -> name('admin.users.all');
 
+        Route::get('/view/{id}' , [HandleUserController::class , 'viewUser']) -> name('admin.user.view');
 
+        Route::get('/changerole/{id}' , [HandleUserController::class , 'changeUserRole']) -> name('admin.user.changeRole');
+
+        Route::post('delete' , [HandleUserController::class , 'deleteUser']) -> name('admin.user.delete');
+    });
 
 });
 
