@@ -2,9 +2,11 @@
 
 
 @section('content')
+
     <div class="container">
                 
         <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Go back to view dashboard</a>
+        
 
         <div class="alert alert-success display-5" role="alert" id ="successmsg" style="display:none;">
             Deleted successfully
@@ -13,6 +15,8 @@
         <div class="alert alert-success display-5" role="alert" id ="failmsg" style="display:none;">
             Deleting failed
         </div>
+
+        <h1 class="text-align-center justify-content-center d-flex display-3" >All Categories</h1>
 
         <table class="table ">
             <thead>
@@ -29,6 +33,7 @@
                     <th scope="row">{{$counter+=1}}</th>
                     <td class="col-6">{{$category->name}}</td>
                     <td class="col-6"> 
+                        <a href="{{route('admin.category.withid',$category->id)}}"  class="btn btn-primary">View All Products</a>
                         <a href="{{route('admin.category.edit',$category->id)}}" class="btn btn-success">Change Name</a>
                         <a href="#" category_id ="{{$category->id}}" class="deletebtn btn btn-danger">Delete</a>
                     </td>
@@ -45,19 +50,19 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 @section('scripts')
-<script>
+<script type="application/javascript">
     //deleting button
     $(document).on('click','.deletebtn',function(event){
         event.preventDefault();
 
         var categoryid = $(this).attr('category_id');
         $.ajax({
-        type: 'POST',
-        enctype : 'multipart/data-form', 
-        url: "{{route('admin.category.delete')}}",
-        data : {
-            '_token' : "{{csrf_token()}}",
-            'id' : categoryid,
+            type: 'POST',
+            enctype : 'multipart/data-form', 
+            url: "{{route('admin.category.delete')}}",
+            data : {
+                '_token' : "{{csrf_token()}}",
+                'id' : categoryid,
         } ,
         // processData: false,
         // contentType : false,

@@ -52,10 +52,11 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-8 offset-md-4 container">
+                                <button type="submit" class="btn btn-primary btn-block w-25">
                                     {{ __('Login') }}
                                 </button>
+                                <br>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

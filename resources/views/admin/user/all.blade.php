@@ -5,7 +5,11 @@
     <div class="container">
                 
         <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Go back to view dashboard</a>
+        <a href="{{route('admin.user.addAdmin')}}" class="btn btn-primary">Add new Admin</a>
         
+
+        <h1 class="text-align-center justify-content-center d-flex display-3" >All Users</h1>
+
         <table class="table ">
             <thead>
             <tr>
@@ -41,7 +45,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 @section('scripts')
-<script>
+<script type="application/javascript">
     //deleting button
     $(document).on('click','.deletebtn',function(event){
         event.preventDefault();

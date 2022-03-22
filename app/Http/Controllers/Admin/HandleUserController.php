@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+
+use Illuminate\Auth\Events\Registered;
 
 class HandleUserController extends Controller
 {
@@ -62,5 +66,26 @@ class HandleUserController extends Controller
 
         return redirect()->route('admin.user.view',$user->id);
 
+    }
+
+
+    public function newAdminForm()
+    {
+        return view('admin.user.addadmin');
+    }
+
+    public function createAdmin(Request $request)
+    {
+        $admin = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'password' => Hash::make($request['password']),
+            'utype' => 'admin',
+        ]);
+
+        event(new Registered($admin));
+
+        return redirect() ->route('admin.users.all');
     }
 }

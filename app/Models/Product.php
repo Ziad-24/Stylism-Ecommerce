@@ -25,11 +25,11 @@ class Product extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-       
+        'updated_at',
     ];
 
     public function category()
     {
-        return $this -> belongsTo(Category::class , 'category_id');
+        return $this->belongsTo('App\Models\Category' , 'category_id','id');
     }
 }

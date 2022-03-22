@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -89,4 +90,15 @@ class CategoryController extends Controller
             'id' => $request -> id,
         ]);
     }
+
+
+    public function getCertainCategory($id)
+    {
+        $categoryName = Category::where('id' , $id) -> select('name')->get();
+        $categoryName = $categoryName[0];
+        $products = Product::where('category_id' , $id)->paginate(PAGINATION_COUNT);
+        $counter=0;
+        return view('admin.category.certain' , compact('products','counter','categoryName'));    
+    }
+
 }

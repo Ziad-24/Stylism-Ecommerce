@@ -14,6 +14,7 @@
        <div>
            <a href="{{route('admin.category.all')}}" class="btn btn-success">View All Categories</a>
            <a href="{{route('admin.users.all')}}" class="btn btn-primary">View All Users</a>
+           <a href="{{route('admin.products.all')}}" class="btn btn-primary">View All Products</a>
         </div>
         
     </div>
