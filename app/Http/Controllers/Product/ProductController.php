@@ -75,4 +75,61 @@ class ProductController extends Controller
         
         return redirect()->route('admin.products.all');
     }
+
+    public function editProduct(Request $request)
+    {
+          // Offer::findOrFail($offerId);
+          $product = Product::find($request -> id);
+          $categories = Category::select('id','name')->get();
+          if(!$product)
+          {
+              return response() -> json([
+              'status' => false ,
+              'message' => 'data not found',
+              'id' => $request -> id,
+               ]);
+          }
+        return view('admin.product.edit' , compact('product','categories'));
+    }
+
+    public function updateProduct(Request $request)
+    {
+        $product = Product::find($request->id);
+        // return $product;
+        if(!$product)
+        {
+            return response() -> json([
+                'status' => false ,
+                'message' => 'Category Updating Failed',
+                'data' => $request -> id,
+            ]);
+        }
+        
+        //update data
+        $product->update($request -> all());
+
+        if($request->photo)
+        {
+            // delete old image
+            $path = public_path('storage/').$product->img;
+            unlink($path);
+            // place new one
+            $data = [];
+            $data['photo'] = $request->photo;
+            
+            $imagepath =  $data['photo']->store('uploads', 'public');
+            $image = Image::make(public_path("storage/{$imagepath}"))->resize(1000,1000);
+            $image->save();
+
+            $product->update([
+                'img' => $imagepath
+            ]);
+
+        }
+        return response() -> json([
+            'status' => true ,
+            'message' => 'Category Updated Successfully',
+            'id' => $request -> id,
+        ]);
+    }
 }

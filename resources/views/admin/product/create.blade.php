@@ -8,7 +8,7 @@
         
         <form method="POST" action="{{route('admin.product.store')}}" enctype="multipart/form-data">
             @csrf
-            <h1 class="display-4 text-align-center justify-content-center d-flex">Add your offer</h1>
+            <h1 class="display-4 text-align-center justify-content-center d-flex">Add your Product</h1>
 
             @if(Session::has('success'))
             <div class="alert alert-success" role="alert">

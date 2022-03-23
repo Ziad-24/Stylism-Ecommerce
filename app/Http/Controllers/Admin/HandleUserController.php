@@ -69,12 +69,12 @@ class HandleUserController extends Controller
     }
 
 
-    public function newAdminForm()
+    public function createAdmin()
     {
         return view('admin.user.addadmin');
     }
 
-    public function createAdmin(Request $request)
+    public function storeAdmin(Request $request)
     {
         $admin = User::create([
             'name' => $request['name'],
