@@ -66,8 +66,15 @@ Route::group(['middleware' => 'admin' , 'prefix'=>'admin'],function(){
         
         Route::get('/category/{id}' , [CategoryController::class , 'getCertainCategory']) -> name('admin.category.withid');
         
-        Route::post('delete' , [ProductController::class , 'deleteProduct']) -> name('admin.product.delete');
+        Route::post('/delete' , [ProductController::class , 'deleteProduct']) -> name('admin.product.delete');
 
+
+        Route::get('/create',[ProductController::class , 'createProduct']) -> name('admin.product.create');
+        Route::post('/store',[ProductController::class , 'storeProduct']) -> name('admin.product.store');
+
+        
+        // missing crud
+        // then validation
     });
 });
 

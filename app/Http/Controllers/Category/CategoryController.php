@@ -80,7 +80,8 @@ class CategoryController extends Controller
                 'data' => $request -> id,
             ]);
         }
-
+         
+        $this->deleteProductImages($request->id);
         $category->products()->delete();
         $category->delete();
 
@@ -89,6 +90,16 @@ class CategoryController extends Controller
             'message' => 'Category Deleted Successfully',
             'id' => $request -> id,
         ]);
+    }
+
+    public function deleteProductImages($id)
+    {
+        $products = Product::where('category_id' , $id)->get();
+        foreach($products as $product)
+        {
+            $path = public_path('storage/').$product->img;
+            unlink($path);
+        }
     }
 
 

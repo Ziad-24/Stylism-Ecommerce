@@ -29,7 +29,7 @@
                         <th scope="row">{{$counter+=1}}</th>
                         <td>{{$product->name}}</td>
                         <td>{{$product->price}}</td>
-                        <td>{{$product->img}}</td>
+                        <td> <img src="/storage/{{$product->img}}" alt="product image" width="120px" height="auto"></td>
                         <td><a href="#" class="text-decoration-none">{{$product->category->name}}</a></td>
                         <td>
                             <a href="#" class="btn btn-warning">Update Product</a>

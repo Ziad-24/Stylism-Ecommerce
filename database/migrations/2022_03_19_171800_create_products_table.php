@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->float('price');
             $table->string('img');
+            $table->string('details');
             $table->bigInteger('category_id');
             $table->timestamps();
         });

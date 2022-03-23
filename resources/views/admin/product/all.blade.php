@@ -7,7 +7,7 @@
         <div class="d-flex">
             <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Go back to view dashboard</a>
         
-            <a href="#" class="btn btn-success">Add product "not functional"</a>
+            <a href="{{route('admin.product.create')}}" class="btn btn-success">Add product</a>
         </div>
 
         <div class="alert alert-success display-5" role="alert" id ="successmsg" style="display:none;">
@@ -19,7 +19,7 @@
         </div>
         <br>
         <h1 class="text-align-center justify-content-center d-flex display-3" >All Products</h1>
-        <table class="table display-4">
+        <table class="table display-6">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -31,13 +31,13 @@
 
             </tr>
             </thead>
-            <tbody class="display-6">
+            <tbody style="font-size: 2rem">
                 @foreach ($products as $product)  
                     <tr class="productRow{{$product->id}}">
                         <th scope="row">{{$counter+=1}}</th>
                         <td>{{$product->name}}</td>
                         <td>{{$product->price}}</td>
-                        <td>{{$product->img}}</td>
+                        <td> <img src="/storage/{{$product->img}}" alt="product image" width="120px" height="auto"></td>
                         <td><a href="{{  route('admin.category.withid',$product->category_id)   }}" class="text-decoration-none">{{$product->category->name}}</a></td>
                         <td>
                             <a href="#" class="btn btn-warning">Update Product</a>
