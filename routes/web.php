@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use GuzzleHttp\Middleware;
+use App\Http\Controllers\Site\NavigationController;
+use App\Http\Controllers\Site\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [NavigationController::class , 'index'])-> name('site.homepage');
+Route::get('/latest-products' , [NavigationController::class , 'allLatestProducts']) -> name('site.latestProducts');
+Route::get('/product/{id}' , [ProductController::class , 'getProduct']) -> name('site.product');
+
 
 Auth::routes(['verify'=>true]);
 Route::group(['prefix'=>'login/google'] , function(){
