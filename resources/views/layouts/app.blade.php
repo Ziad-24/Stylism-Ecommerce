@@ -28,10 +28,27 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                    Stylism
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{route('site.allProducts')}}">All Products</a></li>
+                                <li><a class="dropdown-item" href="{{route('site.allCategories')}}">All Categories</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                                <li><a class="dropdown-item" href="{{route('site.latestProducts')}}">New Arrivals</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                   
+                </div>
+
+                
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
@@ -54,18 +71,13 @@
                                 </li>
                             @endif
                         @else
+                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
                                
-                                {{-- 
-                                     @if(auth()->user()->utype == 'admin')
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle"href="{{route('admin.dashboard')}}"  role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        Admin Dashboard
-                                    </a>
-                                    @endif 
-                                    --}}
+                              
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @if(auth()->user()->utype == 'admin')
@@ -85,13 +97,24 @@
                                     </form>
                                 </div>
                             </li>
+                            <form class="d-flex">
+                                <button class="btn btn-outline-dark" type="submit">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    Cart
+                                    <span class="badge bg-dark text-white ms-1 rounded-pill">TBD</span>
+                                </button>
+                            </form>
                         @endguest
                     </ul>
                 </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
+            
         </nav>
 
-        <main class="">
+        <main class="pt-2">
             @yield('content')
             @yield('scripts')
         </main>

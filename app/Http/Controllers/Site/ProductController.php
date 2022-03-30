@@ -11,7 +11,8 @@ class ProductController extends Controller
     public function getProduct($id)
     {
         $product = Product::find($id);
-        
-        return view('products.product' , compact('product'));
+        $relatedProducts = Product::where('category_id' , $product->category_id)->paginate(8);
+        // return $product->category_id;
+        return view('products.product' , compact('product' , 'relatedProducts'));
     }
 }

@@ -19,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [NavigationController::class , 'index'])-> name('site.homepage');
 Route::get('/latest-products' , [NavigationController::class , 'allLatestProducts']) -> name('site.latestProducts');
+Route::get('/all-products' , [NavigationController::class , 'allProducts']) -> name('site.allProducts');
+Route::get('/products-with-category/{id}' , [NavigationController::class , 'productsInCategoryFromAProduct']) -> name('site.productInCategory');
+Route::get('/products-with-category/{id}' , [NavigationController::class , 'productsInCategoryFromACategory']) -> name('site.productInCategoryFromCategory');
 Route::get('/product/{id}' , [ProductController::class , 'getProduct']) -> name('site.product');
+Route::get('/all-categories' , [NavigationController::class , 'allCategories']) -> name('site.allCategories');
 
 
 Auth::routes(['verify'=>true]);

@@ -23,4 +23,39 @@ class NavigationController extends Controller
         $latestProducts = Product::select()->latest()->paginate(20);
         return view('products.latest' , compact('latestProducts'));
     }
+
+    public function allProducts()
+    {
+        // needs a view
+        $products = Product::select()->simplepaginate(20);
+        // return $products;
+        return view('products.all' , compact('products'));
+    }
+    
+    public function productsInCategoryFromAProduct($id)
+    {
+        $product = Product::find($id);
+        $category = Category::select()->where('id' , $product->id)->get();
+        $category = $category[0];
+        $products = Product::where('category_id' , $product->category_id)->simplepaginate(20);
+        return view('category.certaincategory' , compact('products' , 'category'));
+    }
+
+    public function productsInCategoryFromACategory($id)
+    {
+        $category = Category::select()->where('id' , $id)->get();
+        $category = $category[0];
+        $products = Product::where('category_id' ,$id)->simplepaginate(20);
+        return view('category.certaincategory' , compact('products' , 'category'));
+    }
+
+
+    public function allCategories()
+    {
+        // seperate women from men
+        $menCategories = Category::where('name' , 'like' , 'Men%')->get();
+        $womenCategories = Category::where('name' , 'like' , 'Women%')->get();
+        
+        return view('category.all' , compact('menCategories','womenCategories'));
+    }
 }

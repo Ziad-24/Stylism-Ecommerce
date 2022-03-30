@@ -1,29 +1,21 @@
 @extends('layouts.app')
 
-@section('head')
-    <title>Stylism</title>
-    @include('includes.cssfiles')
-@endsection
-
 @section('content')
-
-    {{-- @include('includes.nav') --}}
-    @include('includes.header')
 
     <div class="container px-4 px-lg-5 mt-5"> 
         {{-- container start --}}
 
         {{-- Which category --}}
-        <div class="justify-content-evenly text-align-center align-items-baseline d-flex py-2">
-            <h1 class="">Latest Products</h1>
-            <a href="{{route('site.latestProducts')}}" class="text-dark">View Latest Product </a>
+        <div class="">
+            <h1 class="justify-content-evenly text-align-center align-items-baseline d-flex">Category : {{$category->name}}</h1>
+            
             <br>
         </div>
         
 
         {{-- items in category --}}
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> 
-            @foreach ($latestProducts as $product)    
+            @foreach ($products as $product)    
             <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Product image-->
@@ -51,32 +43,9 @@
             @endforeach
         </div>
         {{-- end items in category --}}
-
-        {{-- Which category --}}
-        <div class="justify-content-around text-align-center align-items-baseline d-flex">
-            <h1 class="">Categories</h1>
-
-            <a href="{{route('site.allCategories')}}" class="text-dark">View All Categories</a>
-            <br>
-        </div>
-
-        {{-- categories --}}
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            @foreach ($allCategories as $category)
-            <div class="col-3">
-                <a href="{{route('site.productInCategoryFromCategory',$category->id)}}" class="btn btn-primary ">{{$category->name}}</a>    
-            </div>
-            @endforeach
-        
-        </div> 
-        
-
-
-
-        {{-- container end --}}
     </div>
-        
-
+    <div class="container justify-content-center align-items-center d-flex">{{$products->links()}}</div>
 
     @include('includes.footer')
+
 @endsection

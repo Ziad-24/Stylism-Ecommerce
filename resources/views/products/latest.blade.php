@@ -13,7 +13,7 @@
 
 <div class="container px-4 px-lg-5 mt-5"> 
     {{-- container start --}}
-    <h1 class="display-1">TO ADD RELATED AT THE BOTTOM</h1>
+    {{-- <h1 class="display-1">TO ADD RELATED AT THE BOTTOM</h1> --}}
 
     {{-- Which category --}}
     <div class="justify-content-center text-align-center align-items-baseline d-flex py-2">
@@ -52,4 +52,7 @@
     </div>
     {{-- end items in category --}}
     {{$latestProducts -> links()}}
+
+    @include('includes.footer')
+
 @endsection
