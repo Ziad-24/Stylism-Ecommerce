@@ -37,5 +37,5 @@ Route::group(['prefix'=>'login/google'] , function(){
 
 Route::group(['middleware'=>'auth'] , function(){
     Route::post('addtocart/{$product}' , [CartController::class , 'store']) -> name('site.addToCart');
-    Route::get('/cart' , [CartController::class , 'allCart']) -> name('site.allCart');
+    Route::get('/cart' , [CartController::class , 'allCart']) -> name('site.Cart');
 });

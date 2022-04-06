@@ -98,7 +98,7 @@
                                 </div>
                             </li>
                             <form class="d-flex">
-                                <a class="btn btn-outline-dark" href="{{route('site.allCart')}}">
+                                <a class="btn btn-outline-dark" href="{{route('site.Cart')}}">
                                     <i class="bi-cart-fill me-1"></i>
                                     Cart
                                 </a>

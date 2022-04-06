@@ -26,6 +26,13 @@ class CartController extends Controller
 
     public function allCart()   
     {
-        return auth()->user()->products;
+        $products = auth()->user()->products;
+        $total=0;
+        foreach($products as $product)
+        {
+            $total += $product->price;
+        }
+        // return $products;
+        return view('user.cart' , compact('products' , 'total'));
     }
 }
