@@ -7,7 +7,7 @@
         <div class="d-flex">
             <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Go back to view dashboard</a>
         
-            <a href="#" class="btn btn-success">Add product "not functional"</a>
+            <a href="{{route('admin.product.create')}}" class="btn btn-success">Add product</a>
         </div>
         <h1 class="text-align-center justify-content-center d-flex display-3">{{$categoryName->name}}</h1>
 

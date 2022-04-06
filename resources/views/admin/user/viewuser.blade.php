@@ -12,7 +12,7 @@
         <br>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" value="{{$user->email}}">
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" value="{{$user->email}}" disabled>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         

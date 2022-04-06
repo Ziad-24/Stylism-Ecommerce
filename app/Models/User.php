@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Mail\NewUserWelcomeMail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -48,4 +50,32 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // Relations
+
+    public function products()
+    {   
+        return $this -> belongsToMany('App\Models\Product' , 'product_user' , 'user_id' , 'product_id');
+    }
+
+
+
+    // when creating a new user this event will get fired right away
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function($user){
+
+
+            // $user -> profile() -> create([
+            //     'title' => $user -> username,
+                
+            // ]);
+            
+            
+
+        });
+    }
 }

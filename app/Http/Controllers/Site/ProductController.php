@@ -12,7 +12,10 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $relatedProducts = Product::where('category_id' , $product->category_id)->paginate(8);
+
+        $hasInCart = (auth()->user()) ? auth()->user()->products->contains($id) : false;
+
         // return $product->category_id;
-        return view('products.product' , compact('product' , 'relatedProducts'));
+        return view('products.product' , compact('product' , 'relatedProducts' , 'hasInCart'));
     }
 }

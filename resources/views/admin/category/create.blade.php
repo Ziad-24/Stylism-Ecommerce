@@ -11,9 +11,9 @@
            @csrf
             <div class="form-group w-100">
                 <label for="name">Category Name</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
                 @error('name')
-                    <small>{{$message}}</small>
+                    <small class="form-text text-danger">{{$message}}</small>
                 @enderror
             </div>
             

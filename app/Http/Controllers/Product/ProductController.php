@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use File;
@@ -53,7 +54,7 @@ class ProductController extends Controller
         return view('admin.product.create' , compact('categories'));
     }
 
-    public function storeProduct(Request $request)
+    public function storeProduct(ProductRequest $request)
     {
         // dd($request);
         // return $request->photo;

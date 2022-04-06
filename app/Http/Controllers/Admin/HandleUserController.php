@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -74,7 +75,7 @@ class HandleUserController extends Controller
         return view('admin.user.addadmin');
     }
 
-    public function storeAdmin(Request $request)
+    public function storeAdmin(CreateAdminRequest $request)
     {
         $admin = User::create([
             'name' => $request['name'],

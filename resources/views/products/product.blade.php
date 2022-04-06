@@ -25,17 +25,23 @@
                     </div>
                     <p class="lead">{{$product->details}}</p>
                     <div class="d-flex">
-                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                            <i class="bi-cart-fill me-1"></i>
-                            Add to cart
-                        </button>
+                        @auth
+                            
+                            <add-to-cart userId={{auth()->user()->id}} productId={{$product->id}} inCart={{$hasInCart}}></add-to-cart> 
+                            
+                        @else
+                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                            <a class="btn btn-outline-dark flex-shrink-0" href="{{route('site.addToCart',$product->id)}}">
+                                <i class="bi-cart-fill me-1"></i>
+                                Add to cart
+                            </a>
+                        @endif
                     </div>
                     <br>
                     <br>
                     <div class="d-flex text-dark align-items-baseline">
                         <h4 class="bold">Category: &nbsp;</h4>
-                        <a href="{{route('site.productInCategory',$product->category_id)}}" class="text-decoration-none" style="color: blue;"><h5>{{$product->category->name}}</h5></a>
+                        <a href="{{route('site.productInCategoryFromCategory',$product->category_id)}}" class="text-decoration-none" style="color: blue;"><h5>{{$product->category->name}}</h5></a>
                     </div>
                 </div>
             </div>

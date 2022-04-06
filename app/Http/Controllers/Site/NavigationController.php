@@ -14,7 +14,6 @@ class NavigationController extends Controller
         $latestProducts = Product::select()->latest()->paginate(4);
         $allCategories = Category::select('id','name')->paginate(3);
         
-
         return view('user.main',compact('latestProducts' , 'allCategories'));
     }
 

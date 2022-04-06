@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Site\CartController;
 use App\Http\Controllers\Site\NavigationController;
 use App\Http\Controllers\Site\ProductController;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,6 @@ Route::group(['prefix'=>'login/google'] , function(){
 });
 
 Route::group(['middleware'=>'auth'] , function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    
+    Route::post('addtocart/{$product}' , [CartController::class , 'store']) -> name('site.addToCart');
+    Route::get('/cart' , [CartController::class , 'allCart']) -> name('site.allCart');
 });
