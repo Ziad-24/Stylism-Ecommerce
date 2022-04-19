@@ -27,11 +27,10 @@
                     <div class="d-flex">
                         @auth
                             
-                            <add-to-cart userId={{auth()->user()->id}} productId={{$product->id}} inCart={{$hasInCart}}></add-to-cart> 
+                            <add-cart user-id={{auth()->user()->id}} product-id={{$product->id}} in-cart={{$hasInCart}}></add-cart> 
                             
                         @else
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <a class="btn btn-outline-dark flex-shrink-0" href="{{route('site.addToCart',$product->id)}}">
+                            <a class="btn btn-outline-dark flex-shrink-0" href="{{route('login')}}">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
                             </a>

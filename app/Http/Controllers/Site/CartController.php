@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class CartController extends Controller
     public function store(Product $product)
     {
         // no problem with that error
-
+        // $product = Product::find($id);
         // auth()->user()->products()->toggle($product->id);
         return auth()->user()->products()->toggle($product->id);
     }
@@ -35,4 +36,6 @@ class CartController extends Controller
         // return $products;
         return view('user.cart' , compact('products' , 'total'));
     }
+
+    
 }

@@ -1,12 +1,13 @@
 <template>
-    <div class="container">
-        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex align-items-baseline justify-content-around">
-            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-            <div class="text-center">
-                <button class="btn btn-outline-dark mt-auto" @click="addToCart" v-text="buttonText"></button>
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex align-items-baseline">
+            <div class="">
+               
+                <button class="btn btn-outline-dark mt-auto" @click="addToCart" >
+                     <i class="bi-cart-fill me-1"></i>
+                     {{this.buttonText}}
+                </button>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -30,7 +31,7 @@
             // response is the return value of the route with a method that u called
 
             axios
-                .post("/addtocart/" + this.productId)
+                .post("/addtocart/"+this.productId)
                 .then((response) => {
                     console.log(response.data);
                     // this updates the UI lively

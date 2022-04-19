@@ -99,8 +99,10 @@
                             </li>
                             <form class="d-flex">
                                 <a class="btn btn-outline-dark" href="{{route('site.Cart')}}">
+                                    {{auth()->user()->products->count()}}
                                     <i class="bi-cart-fill me-1"></i>
                                     Cart
+
                                 </a>
                             </form>
                         @endguest
