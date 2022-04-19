@@ -32,7 +32,7 @@
                         @else
                             <a class="btn btn-outline-dark flex-shrink-0" href="{{route('login')}}">
                                 <i class="bi-cart-fill me-1"></i>
-                                Add to cart
+                                Add To Cart
                             </a>
                         @endif
                     </div>
